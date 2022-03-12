@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "faceapp-backend"
+version = "0.1.0"
+description = ""
+authors = ["Vyvy-vi <vyom.j@protonmail.com>"]
+license = "GPL-3.0-or-later"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.75.0"
+uvicorn = "^0.17.6"
+pydantic = "^1.9.0"
+python-dotenv = "^0.19.0"
+aiofiles = "^0.8.0"
+mongoengine = "^0.24.0"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^4.0.1"
+black = "^22.1.0"
+isort = "^5.10.1"
+pytest = "^7.0.1"
+pre-commit = "^2.17.0"
+taskipy = "^1.10.1"
+pytest-cov = "^3.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+lint = "flake8 ."
+post_lint = "task format"
+format = "task isort && task black"
+isort = "isort ."
+black = "black ."
+start = "uvicorn src.main:app"
+precommit = "pre-commit install --hook-type pre-commit --hook-type pre-push"
+test = "pytest --cov=src tests/"
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
