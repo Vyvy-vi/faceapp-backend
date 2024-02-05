@@ -7,7 +7,7 @@ license = "GPL-3.0-or-later"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-fastapi = "^0.75.0"
+fastapi = "^0.109.1"
 uvicorn = "^0.17.6"
 pydantic = "^1.9.0"
 python-dotenv = "^0.19.0"
